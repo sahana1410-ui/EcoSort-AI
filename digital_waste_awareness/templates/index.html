@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn to segregate waste, record recycling activity and build sustainable habits.">
+  <title>EcoSort | Digital Waste Awareness</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">♻</span><span>EcoSort<small>WASTE AWARENESS</small></span></a>
+  <nav>
+    <a href="#dashboard">Dashboard</a><a href="#guide">Segregation Guide</a><a href="#log">Log Waste</a><a href="#quiz">Take Quiz</a>
+  </nav>
+  <a class="top-cta" href="#log">Get started <span>↗</span></a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow"><span></span> SMALL ACTIONS. BIG IMPACT.</div>
+      <h1>Sort it right.<br><em>Save our planet.</em></h1>
+      <p>Make waste segregation simple. Learn where every item belongs, track your recycling habits and take a step towards a cleaner tomorrow.</p>
+      <div class="hero-actions"><a class="btn primary" href="#guide">Explore the guide <span>→</span></a><a class="text-link" href="#dashboard">View dashboard ↓</a></div>
+      <div class="hero-note"><span class="avatars">● ● ●</span><span>Every correctly sorted item makes a difference.</span></div>
+    </div>
+    <div class="hero-art">
+      <div class="sun"></div><div class="leaf leaf-one">✦</div><div class="leaf leaf-two">✦</div>
+      <div class="art-circle"><div class="recycle">♻</div><div class="plant">🌱</div></div>
+      <div class="floating-card card-left"><span class="mini-icon green">✓</span><div><b>Sort smart</b><small>Know your waste</small></div></div>
+      <div class="floating-card card-right"><span class="mini-icon blue">↗</span><div><b>Track impact</b><small>Build better habits</small></div></div>
+      <div class="ground"></div>
+    </div>
+  </section>
+
+  <section class="stats-grid" id="dashboard">
+    <div class="stat-card"><div class="stat-icon">♻</div><span class="stat-label">WASTE RECORDS</span><strong id="stat-records">0</strong><small>Entries logged</small></div>
+    <div class="stat-card"><div class="stat-icon">⚖</div><span class="stat-label">TOTAL QUANTITY</span><strong id="stat-quantity">0</strong><small>Combined quantity (units as entered)</small></div>
+    <div class="stat-card"><div class="stat-icon">🌿</div><span class="stat-label">QUIZ ATTEMPTS</span><strong id="stat-quizzes">0</strong><small>Awareness check-ins</small></div>
+    <div class="stat-card highlight-stat"><div class="stat-icon">🌍</div><span class="stat-label">YOUR NEXT STEP</span><strong>Sort today</strong><small>Start with one item at a time</small></div>
+  </section>
+
+  <section class="section" id="guide">
+    <div class="section-heading"><div><div class="eyebrow">KNOW WHERE IT GOES</div><h2>Waste segregation <em>made easy</em></h2></div><p>Choose a category to see common examples and the right way to handle them. Local collection rules may differ.</p></div>
+    <div class="category-grid" id="category-grid"></div>
+    <div class="guide-detail" id="guide-detail"><div class="guide-placeholder">Select a waste category above to view its disposal guide.</div></div>
+  </section>
+
+  <section class="section log-section" id="log">
+    <div class="section-heading"><div><div class="eyebrow">MAKE YOUR ACTION COUNT</div><h2>Log your <em>waste</em></h2></div><p>Record the waste you have sorted. Your entries are saved in the application database.</p></div>
+    <div class="log-layout">
+      <form class="panel form-panel" id="waste-form">
+        <h3>Add a waste record</h3><p class="muted">Fields marked * are required.</p>
+        <label>Waste category *</label><select id="category" required><option value="">Choose category</option></select>
+        <label>Item name *</label><input id="item-name" maxlength="100" placeholder="e.g. Plastic water bottles" required>
+        <div class="two-fields"><div><label>Quantity *</label><input id="quantity" type="number" min="0.01" max="100000" step="0.01" placeholder="e.g. 2" required></div><div><label>Unit *</label><select id="unit"><option value="kg">Kilograms (kg)</option><option value="g">Grams (g)</option><option value="items">Items</option></select></div></div>
+        <label>Notes (optional)</label><textarea id="notes" maxlength="300" rows="3" placeholder="Any additional details..."></textarea>
+        <button class="btn primary full" type="submit">Save waste record <span>→</span></button>
+        <div class="form-message" id="form-message" role="status"></div>
+      </form>
+      <div class="panel recent-panel"><div class="panel-title"><div><h3>Recent activity</h3><p class="muted">Your latest saved entries</p></div><span class="live-dot">LIVE</span></div><div id="recent-list" class="recent-list"><div class="empty-state">No records yet. Add your first entry.</div></div></div>
+    </div>
+  </section>
+
+  <section class="section quiz-section" id="quiz">
+    <div class="quiz-intro"><div class="eyebrow">LEARN BY DOING</div><h2>How much do you<br><em>know about recycling?</em></h2><p>Try this quick five-question quiz and check your waste-sorting knowledge.</p><div class="quiz-badge">🌱 5 QUESTIONS · INSTANT RESULT</div></div>
+    <div class="panel quiz-panel"><div class="quiz-top"><span id="quiz-progress">QUESTION 1 OF 5</span><div class="progress"><span id="progress-fill"></span></div></div><h3 id="question-text"></h3><div id="answer-options" class="answer-options"></div><div class="quiz-bottom" id="quiz-bottom"><span id="quiz-feedback" role="status"></span><button id="next-question" class="btn primary" disabled>Next question →</button></div><div id="quiz-result" hidden></div></div>
+  </section>
+
+  <section class="bottom-banner"><div class="banner-leaf">🌳</div><div><div class="eyebrow">A CLEANER FUTURE STARTS HERE</div><h2>Be part of the <em>solution.</em></h2><p>Reduce what you use. Reuse what you can. Recycle what is accepted locally.</p></div><a class="btn light" href="#log">Record your action ↗</a></section>
+</main>
+<footer><a class="brand footer-brand" href="#"><span class="brand-mark">♻</span><span>EcoSort<small>WASTE AWARENESS</small></span></a><span>Learn · Segregate · Recycle</span><span>Built for a greener tomorrow © 2026</span></footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
