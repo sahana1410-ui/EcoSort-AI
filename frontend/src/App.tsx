@@ -172,7 +172,7 @@ function App() {
   })
 
   const [loading, setLoading] = useState(true)
-  const [connectionError, setConnectionError] = useState('')
+  const [, setConnectionError] = useState<string | null>(null)
 
   const [centers, setCenters] = useState<
     Array<{
@@ -618,7 +618,7 @@ function App() {
           ) : (
             <>
               <div className="category-grid">
-                {Object.entries(categories).map(([name, category]) => {
+                {Object.entries(categories).map(([name]) => {
                   const [emoji, label] = categoryMeta[name] || ['♻', 'Waste']
 
                   return (
