@@ -4,8 +4,10 @@ from pathlib import Path
 from datetime import datetime
 from io import BytesIO
 from PIL import Image, UnidentifiedImageError
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 # Maximum uploaded image size: 5 MB
 app.config["MAX_CONTENT_LENGTH"] = 5 * 1024 * 1024
 DB_PATH = Path(__file__).with_name("waste_awareness.db")

@@ -130,8 +130,10 @@ const questions = [
   }
 ]
 
+const API_BASE_URL = 'https://ecosort-ai-backend-3xhw.onrender.com'
+
 async function api(url: string, options: RequestInit = {}) {
-  const response = await fetch(url, {
+  const response = await fetch(`${API_BASE_URL}${url}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
